@@ -12,7 +12,7 @@ body{
 nav{
     position: sticky;
     z-index: 3;
-    font-size: 35px;
+    font-size: 15px;
     font-weight: bold;
     color: white;
     padding: 0 100px;
@@ -74,17 +74,21 @@ div.display h2{
 }
 
 @media (max-width: 1048px){
-    label.logo{
-        /*font-size: 32px;*/
-        /*padding-left: 30px;*/
-    }
+
     nav a {
         font-size: 17px;
     }
 }
 @media (max-width: 909px){
+    nav{
+        padding: 0 20px;
+    }
+    label.logo{
+        font-size: 19pt;
+    }
     nav #icon{
         display: block;
+        margin: 0 ;
     }
     nav ul{
         position: fixed;
