@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Responsive Nav Bar</title>
+    <link href="style.css" type="text/css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav>
+        <label class="logo">
+            DesignX
+        </label>
+        <ul class="list">
+            <li><a class="active" href="#Home">Home</a></li>
+            <li><a href="#About">About</a></li>
+            <li><a href="#Services">Services</a></li>
+            <li><a href="#Contact">Contact</a></li>
+            <li><a href="#FeedBack">FeedBack</a></li>
+        </ul>
+        <label id="icon">
+            <i class="fa fa-bars"></i>
+        </label>
+    </nav>
+    <main>
+        <section>
+            <div class="display">
+                <h2> <u>hi there</u></h2>
+                <p>
+                    Today we built responsive nav bar using HTML , CSS , JAVASCRIPT ,
+                    it was amazing tutorial , I enjoy it.
+                </p>
+            </div>
+        </section>
+    </main>
+<script>
+    let isOpen = false ;
+    const list = document.querySelector('.list');
+    const icon = document.querySelector('#icon');
+    icon.addEventListener('click' , ()=>{
+        if(isOpen === false){
+            list.classList.add('normal');
+            isOpen = !isOpen ;
+        }else{
+            list.classList.remove('normal');
+            isOpen = !isOpen ;
+        }
+    });
+</script>
+</body>
+</html>
