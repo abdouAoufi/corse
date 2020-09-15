@@ -1,0 +1,116 @@
+*{
+    margin : 0 ;
+    padding : 0 ;
+    text-decoration: none;
+    list-style: none;
+}
+body{
+    font-family: Montserrat ;
+    background: linear-gradient(to right, #9c27b0, #8ecdff);
+    background-size: cover;
+}
+nav{
+    position: sticky;
+    z-index: 3;
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+    padding: 0 100px;
+    line-height: 80px;
+    background: #2f3640;
+
+}
+
+nav ul {
+    float: right;
+    margin-right: 40px;
+}
+nav li {
+    display: inline-block;
+    margin: 0 8px;
+    line-height: 80px;
+}
+
+nav a {
+   color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    padding: 7px 10px;
+    border-radius: 3px;
+}
+
+a.active, a:hover{
+    border: 1px solid white;
+    transition: .5s;
+}
+
+nav #icon{
+    color: white;
+    font-size: 30px;
+    line-height:80px ;
+    float: right;
+    margin-right:40px ;
+    cursor: pointer;
+    display: none;
+}
+
+div.display{
+    width: 40%;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    line-height: 22px;
+    padding: 15px;
+    border: 1px solid #14faa8;
+    border-radius:8px;
+}
+div.display h2{
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 1048px){
+    label.logo{
+        /*font-size: 32px;*/
+        /*padding-left: 30px;*/
+    }
+    nav a {
+        font-size: 17px;
+    }
+}
+@media (max-width: 909px){
+    nav #icon{
+        display: block;
+    }
+    nav ul{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        transition: .5s;
+        background: #2f3640;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+    }
+    .normal{
+        left: 0;
+    }
+    nav li {
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+
+    nav a {
+        font-size: 20px;
+    }
+
+    a.active,a.hover{
+        border: none;
+        color: #3498db;
+    }
+}
