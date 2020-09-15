@@ -1,15 +1,17 @@
-*{
-    margin : 0 ;
-    padding : 0 ;
+* {
+    margin: 0;
+    padding: 0;
     text-decoration: none;
     list-style: none;
 }
-body{
-    font-family: Montserrat ;
-    background: linear-gradient(to right, #9c27b0, #8ecdff);
+
+body {
+    font-family: Montserrat;
+    background-image: url("bg.jpg") cover;
     background-size: cover;
 }
-nav{
+
+nav {
     position: sticky;
     z-index: 3;
     font-size: 15px;
@@ -18,13 +20,13 @@ nav{
     padding: 0 100px;
     line-height: 80px;
     background: #2f3640;
-
 }
 
 nav ul {
     float: right;
     margin-right: 40px;
 }
+
 nav li {
     display: inline-block;
     margin: 0 8px;
@@ -32,7 +34,7 @@ nav li {
 }
 
 nav a {
-   color: white;
+    color: white;
     font-size: 18px;
     text-transform: uppercase;
     border: 1px solid transparent;
@@ -40,22 +42,23 @@ nav a {
     border-radius: 3px;
 }
 
-a.active, a:hover{
+a.active,
+a:hover {
     border: 1px solid white;
     transition: .5s;
 }
 
-nav #icon{
+nav #icon {
     color: white;
     font-size: 30px;
-    line-height:80px ;
+    line-height: 80px;
     float: right;
-    margin-right:40px ;
+    margin-right: 40px;
     cursor: pointer;
     display: none;
 }
 
-div.display{
+div.display {
     width: 40%;
     position: absolute;
     top: 50%;
@@ -66,31 +69,32 @@ div.display{
     line-height: 22px;
     padding: 15px;
     border: 1px solid #14faa8;
-    border-radius:8px;
+    border-radius: 8px;
 }
-div.display h2{
+
+div.display h2 {
     text-transform: uppercase;
     margin-bottom: 10px;
 }
 
-@media (max-width: 1048px){
-
+@media (max-width: 1048px) {
     nav a {
         font-size: 17px;
     }
 }
-@media (max-width: 909px){
-    nav{
+
+@media (max-width: 909px) {
+    nav {
         padding: 0 20px;
     }
-    label.logo{
+    label.logo {
         font-size: 19pt;
     }
-    nav #icon{
+    nav #icon {
         display: block;
-        margin: 0 ;
+        margin: 0;
     }
-    nav ul{
+    nav ul {
         position: fixed;
         width: 100%;
         height: 100vh;
@@ -100,7 +104,7 @@ div.display h2{
         left: -100%;
         text-align: center;
     }
-    .normal{
+    .normal {
         left: 0;
     }
     nav li {
@@ -108,12 +112,11 @@ div.display h2{
         margin: 50px 0;
         line-height: 30px;
     }
-
     nav a {
         font-size: 20px;
     }
-
-    a.active,a.hover{
+    a.active,
+    a.hover {
         border: none;
         color: #3498db;
     }
