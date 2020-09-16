@@ -1,0 +1,22 @@
+{
+    "objects": [{
+            "name": "Abderahmne",
+            "lastName": "Aoufi",
+            "Age": 21,
+            "Country": "Algeia"
+        },
+        {
+            "name": "Sara",
+            "lastName": "Aoufi",
+            "Age": 26,
+            "Country": "Algeia"
+        },
+        {
+            "name": "Hanane",
+            "lastName": "Aoufi",
+            "Age": 29,
+            "Country": "Algeia"
+        }
+
+    ]
+}
