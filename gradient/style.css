@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    transition: .37s;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(30, 64, 68);
+    height: auto;
+    padding: 0 0px;
+    box-shadow: 0 5px 15px rgba(14, 14, 14, 0.2);
+}
+
+nav>div {
+    margin: 15px auto;
+}
+
+nav .option {
+    display: flex;
+}
+
+.option h4 {
+    margin: 0 20px;
+}
+
+h4 {
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-size: 18pt;
+    font-weight: 800;
+    color: rgb(255, 255, 255);
+}
+
+#logo {
+    color: rgb(22, 252, 252);
+}
+
+.mainCOntainer {
+    margin-top: 20px;
+    /* width: 50%; */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mainCOntainer h2 {
+    font-size: 25pt;
+    text-align: center;
+    font-weight: 700;
+    color: white;
+    font-family: monospace;
+}
+
+#h1COntainer {
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, .65);
+    padding: 10px 20px;
+}
+
+.mainCOntainer button {
+    margin: 20px auto;
+    padding: 10px 40px;
+    background-color: transparent;
+    border: #000 3px solid;
+    border-radius: 8px;
+    font-size: 13pt;
+    font-weight: 400;
+    letter-spacing: 2px;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    cursor: pointer;
+    outline: none;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, .65);
+    color: white;
+    border: #fff 3px solid;
+}
+
+#hexValue {
+    text-transform: uppercase;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    background-color: #eee;
+    position: absolute;
+    bottom: 0%;
+}
+
+@media (max-width: 600px) {
+    nav {
+        padding: 0 0px;
+    }
+    h4 {
+        font-size: 12pt;
+    }
+    .mainCOntainer {
+        top: 30%;
+    }
+    .mainCOntainer h2 {
+        font-size: 17pt;
+    }
+}
