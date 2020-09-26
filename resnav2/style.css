@@ -157,7 +157,7 @@ main {
     border: none;
     cursor: pointer;
     transition: var(--transition);
-    animation: bounce 3s ease-in-out infinite;
+    animation: bounce 2.9s ease-in-out infinite;
 }
 
 .sidebar-toggle:hover {
