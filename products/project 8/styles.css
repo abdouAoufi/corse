@@ -301,3 +301,18 @@ Menu
         height: 150px;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .btn-container {
+        margin-bottom: 4rem;
+        /* border: 1px solid black; */
+        width: auto;
+        display: block;
+        justify-content: center;
+    }
+    .filter-btn {
+        display: block;
+        margin: 10px auto;
+        outline: none;
+    }
+}
