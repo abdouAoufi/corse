@@ -315,4 +315,12 @@ Menu
         margin: 10px auto;
         outline: none;
     }
+    .menu-item {
+        display: grid;
+        gap: .5rem .5rem;
+        max-width: 25rem;
+        padding: 1rem;
+        background: wheat;
+        border-radius: .5rem;
+    }
 }
