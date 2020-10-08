@@ -1,45 +1,22 @@
  const btn = document.querySelectorAll(".tab-btn");
  const about = document.querySelector(".about");
  const articles = document.querySelectorAll(".content");
- let previous;
 
- about.addEventListener('click', function(e) {
-     // console.log(e.target.dataset.id);
-     if (!e.target.classList.contains('active')) {
-         e.target.classList.add("active");
-         selectArticele(e.target.dataset.id);
-         previous = e.target.dataset.id;
-         // console.log(previous);
-     } else {
-         e.target.classList.remove("active");
-         deselectArticele(e.target.dataset.id);
-     }
-
-     btn.forEach(function(button) {
-         if (button.dataset.id != previous) {
+ about.addEventListener("click", function(e) {
+     const id = e.target.dataset.id;
+     if (id) {
+         // remove "active"
+         btn.forEach(function(button) {
              button.classList.remove("active");
-         }
+             e.target.classList.add("active");
+         });
+         // hide articles
 
-     });
+         articles.forEach(function(artc) {
+             artc.classList.remove("active");
+         });
 
+         const element = document.getElementById(id);
+         element.classList.add("active");
+     }
  });
-
- function selectArticele(name) {
-     console.log(name);
-     articles.forEach(function(e) {
-         if (e.id == name) {
-             e.classList.add("active");
-         } else {
-             e.classList.remove("active");
-         }
-     });
- }
-
- function deselectArticele(name) {
-     console.log(name);
-     articles.forEach(function(e) {
-         if (e.id == name) {
-             e.classList.remove("active");
-         }
-     });
- }
