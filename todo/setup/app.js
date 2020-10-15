@@ -11,12 +11,13 @@ const clearBtn = document.querySelector(".clear-btn"); // * <button>
 let editElement;
 let editFlag = false;
 let editID = '';
+let mainTable = "data";
 // ****** EVENT LISTENERS **********
 
 // * submit form
 form.addEventListener('submit', addItem);
 clearBtn.addEventListener('click', clearItems);
-
+window.addEventListener("DOMContentLoaded", setupItems);
 // ****** FUNCTIONS **********
 
 function addItem(e) {
@@ -24,42 +25,24 @@ function addItem(e) {
     const value = grocery.value;
     const id = new Date().getTime().toString();
     if (value && !editFlag) {
-        const element = document.createElement("article");
-        element.classList.add("grocery-item");
-        const attr = document.createAttribute("data-id");
-        attr.value = id;
-        element.setAttributeNode(attr);
-        element.innerHTML = `<p class="title">${value}</p>
-                    <div class="btn-container">
-                        <button class="edit-btn">
-                             <i class="fas fa-edit"></i>
-                         </button>
-                        <button class="delete-btn">
-                             <i class="fas fa-trash"></i>
-                        </button>
-                    </div>`;
-        const deleteBtn = element.querySelector(".delete-btn");
-        const editBtn = element.querySelector(".edit-btn");
-
-        deleteBtn.addEventListener("click", deleteItem);
-        editBtn.addEventListener('click', editItem);
-
-        // * append child
-        list.appendChild(element);
+        createLisItem(id, value);
         displayAlert("Add item to the list", "success");
         groceryContainer.classList.add("show-container");
         // add to locale storage
-        addToLocaleStorage();
+        addToLocaleStorage(id, grocery.value);
         // set back to default
         setBackToDefault();
     } else if (value && editFlag) {
-        console.log('editing');
+        editElement.innerHTML = value;
+        displayAlert('value changed', 'success');
+        editLocaleStorage(editID, value);
+        setBackToDefault();
     } else {
         displayAlert('Empty value', "danger")
     }
 }
 
-// !    ----- display alert -----
+// *    ----- display alert -----
 function displayAlert(text, action) {
     alert.textContent = text;
     alert.classList.add(`alert-${action}`);
@@ -70,22 +53,27 @@ function displayAlert(text, action) {
 }
 //* edit item
 
-function editItem() {
-    console.log("edit item");
+function editItem(e) {
+    const element = (e.currentTarget.parentElement.parentElement); // * <div>  
+    editElement = e.currentTarget.parentElement.previousElementSibling; // * <p>
+    grocery.value = editElement.innerHTML;
+    editFlag = true;
+    editID = element.dataset.id;
+    submitBtn.textContent = "edit";
+    console.log("----id --->", editID);
 }
 
 // * delete item
 
 function deleteItem(e) {
-    console.log("delete");
-    const element = (e.currentTarget.parentElement.parentElement);
+    const element = (e.currentTarget.parentElement.parentElement); // * <div>
     const id = element.dataset.id;
     list.removeChild(element);
     if (list.children.length == 0) {
         groceryContainer.classList.remove("show-container");
         displayAlert("Empty list", "danger");
+        removeFromLocalStorage(id)
         setBackToDefault();
-        // TODO :  removeFromLocalStorage(id)
     }
 }
 // * clear Items 
@@ -98,7 +86,7 @@ function clearItems() {
     }
     groceryContainer.classList.remove("show-container");
     displayAlert("Empty list", "danger");
-    // TODO : localStorage.removeItem('list');
+    localStorage.removeItem('list');
     setBackToDefault();
 }
 
@@ -111,12 +99,74 @@ function setBackToDefault() {
 }
 
 // ****** LOCAL STORAGE **********
-function addToLocaleStorage() {
-    console.log("add to locale storage");
+function addToLocaleStorage(id, value) {
+    const grocery = { id, value }; //ES6 p0wer
+    let items = getLocaleStorage();
+    console.log(items);
+    items.push(grocery);
+    localStorage.setItem("list", JSON.stringify(items));
 }
 
 function removeFromLocalStorage(id) {
+    let items = getLocaleStorage();
+    items = items.filter(function(item) {
+        if (item.id !== id) {
+            return item;
+        }
+    });
+    localStorage.setItem("list", JSON.stringify(items));
+}
 
+function editLocaleStorage(id, value) {
+    console.log(id);
+    let items = getLocaleStorage();
+    items = items.map(function(item) {
+        if (item.id === id) {
+            item.value = value;
+        }
+        return item;
+    });
+    localStorage.setItem("list", JSON.stringify(items));
+}
+
+function getLocaleStorage() {
+    return localStorage.getItem("list") ?
+        JSON.parse(localStorage.getItem("list")) : []; // if there is data return list else return an empty array ...........
 }
 
 // ****** SETUP ITEMS **********
+function setupItems() {
+    let items = getLocaleStorage();
+    if (items.length > 0) {
+        items.forEach(function(item) {
+            createLisItem(item.id, item.value);
+        });
+        groceryContainer.classList.add("show-container")
+    }
+
+}
+
+function createLisItem(id, value) {
+    const element = document.createElement("article");
+    element.classList.add("grocery-item");
+    const attr = document.createAttribute("data-id");
+    attr.value = id;
+    element.setAttributeNode(attr);
+    element.innerHTML = `<p class="title">${value}</p>
+                    <div class="btn-container">
+                        <button class="edit-btn">
+                             <i class="fas fa-edit"></i>
+                         </button>
+                        <button class="delete-btn">
+                             <i class="fas fa-trash"></i>
+                        </button>
+                    </div>`;
+    const deleteBtn = element.querySelector(".delete-btn");
+    const editBtn = element.querySelector(".edit-btn");
+
+    deleteBtn.addEventListener("click", deleteItem);
+    editBtn.addEventListener('click', editItem);
+
+    // * append child
+    list.appendChild(element);
+}
