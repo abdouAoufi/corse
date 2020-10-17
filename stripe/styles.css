@@ -317,7 +317,7 @@ Stripe Styles
         font-size: 5.5rem;
     }
     .hero-images {
-        align-self: end;
+        justify-self: center;
     }
     .phone-img {
         width: 15rem;
