@@ -359,7 +359,7 @@ Stripe Styles
 
 .sidebar {
     width: 90vw;
-    height: 95vh;
+    height: 85vh;
     max-width: var(--fixed-width);
     background: var(--clr-white);
     border-radius: var(--radius);
