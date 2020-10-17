@@ -7,8 +7,13 @@ const sidebar = document.querySelector(".sidebar-links");
 const linkBtns = [...document.querySelectorAll(".link-btn")];
 const submenu = document.querySelector(".submenu");
 const hero = document.querySelector(".hero");
-const nav = document.querySelector(".nav");
+const btn = document.querySelector("#start");
 
+
+btn.addEventListener("click", () => {
+    sidebarWrapper.classList.add("show");
+
+});
 
 toggleBtn.addEventListener("click", () => {
     sidebarWrapper.classList.add("show");
