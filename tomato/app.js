@@ -4,7 +4,14 @@ let time = 25 * 60 * 1000;
 
 
 $(document).ready(function() {
-    $(".start").click(startTime);
+    $(".start").click(function(param) {
+        if (!isStarted) {
+            startTime();
+        } else {
+            cancelTime();
+        }
+
+    });
     $('.hamburger').click(function(param) {
         showSideBar();
     })
@@ -39,16 +46,31 @@ function hideSideBar() {
 const minute = 60 * 1000;
 const secs = 1000;
 let min, sec;
+let allowed = true;
 
 async function startTime() {
     isStarted = true;
-    while (time > 0) {
+    $(".start").html("Cancel");
+    while (time > 0 && allowed) {
+
         await sleep(1000);
         min = Math.floor(time / minute);
         sec = (time % minute) / secs;
         time = time - 1000;
         format(min, sec);
+
+
     }
+}
+
+async function cancelTime() {
+    allowed = false;
+    await sleep(1000);
+    format(25, 00);
+    time = 25 * 60 * 1000;
+    $(".start").html("Start");
+    isStarted = false;
+    allowed = true;
 }
 
 function format(min, sec) {
